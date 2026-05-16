@@ -1,0 +1,104 @@
+{
+  "geode": "5.7.1",
+  "gd": {
+    "win": "2.2081",
+    "android": "2.2081",
+    "mac": "2.2081",
+    "ios": "2.2081"
+  },
+  "id": "oasenhase.gdr_pattern_reader",
+  "name": "GDR Pattern Reader",
+  "version": "v1.0.0",
+  "developer": "OasenHase",
+  "description": "Read numbered click patterns from GDR replays in-game.",
+  "dependencies": {
+    "geode.node-ids": ">=v1.23.3"
+  },
+  "settings": {
+    "percent-from": {
+      "name": "Section from (%)",
+      "description": "Start of the analyzed level section",
+      "type": "float",
+      "default": 0.0,
+      "min": 0.0,
+      "max": 100.0
+    },
+    "percent-to": {
+      "name": "Section to (%)",
+      "description": "End of the analyzed level section",
+      "type": "float",
+      "default": 5.0,
+      "min": 0.0,
+      "max": 100.0
+    },
+    "player-filter": {
+      "name": "Player filter",
+      "description": "Which player's jump inputs to analyze",
+      "type": "string",
+      "default": "auto",
+      "one-of": ["auto", "p1", "p2"]
+    },
+    "level-length-sec": {
+      "name": "Level length (seconds)",
+      "description": "Optional full level duration used by section analysis. Leave 0 to use the replay file.",
+      "type": "float",
+      "default": 0.0,
+      "min": 0.0,
+      "max": 600.0
+    },
+    "timeline-frame-offset": {
+      "name": "Overlay: manual frame offset",
+      "description": "Adds this many GD frames to the frame-counter playhead. Positive moves the playhead later in the replay; negative moves it earlier.",
+      "type": "float",
+      "default": 0.0,
+      "min": -100000.0,
+      "max": 100000.0
+    },
+    "practice-resync-delay-frames": {
+      "name": "Practice Resync Delay Frames",
+      "description": "How many game frames to wait after Practice Mode, StartPos, or checkpoint spawns before snapping the overlay to the stable current percentage.",
+      "type": "float",
+      "default": 12.0,
+      "min": 3.0,
+      "max": 30.0
+    },
+    "timeline-game-fps": {
+      "name": "Overlay: game FPS/TPS",
+      "description": "Your active in-game FPS/TPS. The overlay converts game ticks to GD 240-frame time using 240 / this value. Set 360 when playing at 360 FPS.",
+      "type": "float",
+      "default": 360.0,
+      "min": 30.0,
+      "max": 1000.0
+    },
+    "timeline-frame-scale": {
+      "name": "Overlay: frame scale",
+      "description": "Fine-tune multiplier applied after game FPS conversion. Leave 1.0 first; use tiny changes only if drift remains.",
+      "type": "float",
+      "default": 1.0,
+      "min": 0.01,
+      "max": 2.0
+    },
+    "timeline-resync-tolerance": {
+      "name": "Overlay: resync tolerance (frames)",
+      "description": "Minimum frame difference before practice/start/checkpoint events move the cursor. Normal gameplay never runs percentage resync.",
+      "type": "float",
+      "default": 30.0,
+      "min": 0.0,
+      "max": 120.0
+    },
+    "timeline-debug-overlay": {
+      "name": "Overlay: show sync debug",
+      "description": "Shows current level % and current replay frame on the overlay HUD.",
+      "type": "bool",
+      "default": false
+    },
+    "timeline-window-sec": {
+      "name": "Timeline window (seconds)",
+      "description": "How many seconds of Geometry Dash time the strip shows (uses 240 TPS, same as in-game physics). Scrolls with the playhead.",
+      "type": "float",
+      "default": 7.0,
+      "min": 2.0,
+      "max": 30.0
+    }
+  }
+}

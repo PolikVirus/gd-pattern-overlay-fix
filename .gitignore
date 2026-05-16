@@ -1,0 +1,6 @@
+/build/
+/.cache/
+*.geode
+*.dll
+*.pdb
+CMakeUserPresets.json
